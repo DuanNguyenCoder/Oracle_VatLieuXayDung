@@ -1,9 +1,11 @@
 
 $(".product-img img").on("click",function(){
-	console.log("choose")
+	
 });
+//////////login form
 
 
+////////////////////////
 (function($) {
 	"use strict"
 
