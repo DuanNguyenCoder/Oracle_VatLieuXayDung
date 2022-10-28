@@ -9,6 +9,7 @@ public class Spring2Application implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(Spring2Application.class, args);
+	System.out.println("running");
 	}
 
 	@Override
