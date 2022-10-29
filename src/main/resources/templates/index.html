@@ -197,7 +197,7 @@
 					<!-- NAV -->
  		
 					<ul class="main-nav nav navbar-nav">
-						<li th:each = "cate: ${listCate}" ><a th:text = "${cate.name}" href="#"></a></li>
+						<li th:each = "cate: ${listCate}" ><a th:text = "${cate.name}" th:href="@{/store/{categories}(categories = ${cate.id})}"></a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>
