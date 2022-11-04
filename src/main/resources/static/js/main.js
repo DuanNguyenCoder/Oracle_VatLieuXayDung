@@ -1,9 +1,4 @@
 
-$(".product-img img").on("click",function(){
-	
-});
-//////////login form
-
 
 ////////////////////////
 (function($) {

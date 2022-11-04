@@ -220,7 +220,7 @@ textarea.input {
   background: #FFF;
 }
 
-.input-radio input[type="radio"]+label span {
+.input-radio input[type="radio"]+label  {
   border-radius: 50%;
 }
 
@@ -704,6 +704,7 @@ span.psw {
 
 .cart-dropdown .cart-btns {
   margin: 0px -17px -17px;
+  width: 607px;
 }
 
 .cart-dropdown .cart-btns>a {
@@ -720,7 +721,7 @@ span.psw {
 
 .cart-dropdown .cart-btns>a:first-child {
   margin-right: -4px;
-  background-color: #1e1f29;
+  background-color:#1e1f29;
 }
 
 .cart-dropdown .cart-btns>a:hover {

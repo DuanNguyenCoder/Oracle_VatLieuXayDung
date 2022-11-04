@@ -1,6 +1,7 @@
 package com.example.demo.responsitory;
 
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,8 +19,11 @@ public class itemCartRepository {
 		
 		if (exsistItemCart != null) {
 			exsistItemCart.setQuantity(exsistItemCart.getQuantity() + item.getQuantity());
+			System.out.println("da cong");
+		}else {
+			
+			map.put(item.getId(),item);
 		}
-		map.put(item.getId(),item);
 		
 	}
 	public void remove(int id) {
