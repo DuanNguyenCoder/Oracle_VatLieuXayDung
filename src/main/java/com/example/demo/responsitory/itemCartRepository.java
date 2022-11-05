@@ -18,11 +18,11 @@ public class itemCartRepository {
 		itemCart exsistItemCart = map.get(item.getId());
 		
 		if (exsistItemCart != null) {
-			exsistItemCart.setQuantity(exsistItemCart.getQuantity() + item.getQuantity());
-			System.out.println("da cong");
-		}else {
 			
-			map.put(item.getId(),item);
+			
+			exsistItemCart.setQuantity(exsistItemCart.getQuantity() + item.getQuantity());
+		}else {
+		map.put(item.getId(),item);
 		}
 		
 	}

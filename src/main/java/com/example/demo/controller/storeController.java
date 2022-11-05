@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class storeController {
+
 	
-	
-	@GetMapping("/store/{categories}")
-	public String StoreController(@PathVariable("categories") String cateName) {
+	@GetMapping( value = "/store/{id}")
+	public String deleteStudentPage(@PathVariable("id") int id) {
+		
 		return "store";
 	}
-
 }

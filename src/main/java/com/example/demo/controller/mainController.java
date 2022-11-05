@@ -29,6 +29,13 @@ public class mainController implements ErrorController {
 	} catch (Exception e) {
 		System.out.println(e.getMessage());
 	}
+    List<Object[]> ob=  pro_repo.getall();
+    List<category> ob2=  cate_repo.getall();
+    for (int i = 0 ; i < 3 ; i++) {
+		
+     System.out.println(ob.get(i));
+     System.out.println(ob2.get(i));
+	}
 		return "index";
 	}
 	

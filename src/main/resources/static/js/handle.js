@@ -1,6 +1,6 @@
 $(".add-to-cart-btn").click(function(e) { // .apply-course
 e.preventDefault();
-var id = $(this).parent().find('.idPro').text();
+var id = $(this).parent().find('#idPro').text();
 console.log(id);
 
 $.ajax({

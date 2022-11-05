@@ -220,7 +220,7 @@ textarea.input {
   background: #FFF;
 }
 
-.input-radio input[type="radio"]+label  {
+.input-radio input[type="radio"]+label span {
   border-radius: 50%;
 }
 
@@ -459,7 +459,7 @@ textarea.input {
 /*----------------------------*\
 	login form
 \*----------------------------*/
-/* body {font-family: Arial, Helvetica, sans-serif;} */
+body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -704,7 +704,6 @@ span.psw {
 
 .cart-dropdown .cart-btns {
   margin: 0px -17px -17px;
-  width: 607px;
 }
 
 .cart-dropdown .cart-btns>a {
@@ -721,7 +720,7 @@ span.psw {
 
 .cart-dropdown .cart-btns>a:first-child {
   margin-right: -4px;
-  background-color:#1e1f29;
+  background-color: #1e1f29;
 }
 
 .cart-dropdown .cart-btns>a:hover {
@@ -1302,7 +1301,6 @@ span.psw {
 }
 
 .products-slick-nav {
-	
   position: absolute;
   right: 15px;
   z-index: 10;

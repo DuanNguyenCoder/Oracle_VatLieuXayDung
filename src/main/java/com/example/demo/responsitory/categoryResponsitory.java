@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 @Repository
-public interface categoryResponsitory extends  JpaRepository<category, Integer>  {
+public interface categoryResponsitory extends  JpaRepository<category, Long>  {
 
 	@Query(value = "select * from categories", nativeQuery = true)
 	public List<category> getall();
