@@ -89,7 +89,7 @@
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="#" class="logo">
+								<a href="/" class="logo">
 									<img src="./img/logo.png" alt="">
 								</a>
 							</div>
@@ -129,20 +129,28 @@
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
-										<span>Your Cart</span>
+										<span>Giỏ hàng</span>
 										<div class="qty">3</div>
 									</a>
 									<div class="cart-dropdown">
 										<div class="cart-list">
-											
+										<div th:each = "viewcart: ${listViewCart}" class="product-widget" th:id="${'idWidget-'+ {viewcart.id}}">	
+												<div class="product-img">
+													<img src="./img/product02.png" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a th:text = "${viewcart.name}" href="#"></a></h3>
+													<h4 th:text = "${viewcart.price}" class="product-price"><span th:text = "${viewcart.quantity}" class="qty"></span></h4>
+												</div>
+												<button class="delete"><i th:attr="onclick=|deleteItem('${viewcart.id}')|"  class="fa fa-close"></i></button>
+											</div>
 										</div>
 										<div class="cart-summary">
-											<small>3 Item(s) selected</small>
-											<h5>SUBTOTAL: $2940.00</h5>
+											<small th:text = "${{viewCartSize} + ' Item selected' }">3 Item(s) selected</small>
+											<h5 th:text = "${viewCartAmout}"></h5>
 										</div>
 										<div class="cart-btns">
-											<a href="#">View Cart</a>
-											<a th:href="@{/checkout}">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+											<a th:href="@{/checkout}">Thanh toán<i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -176,7 +184,7 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li th:each = "cate: ${listCate}" ><a th:text = "${cate.name}" th:href="@{/store/{id}(id = ${cate.id})}"></a></li>
+						<li th:each = "cate: ${listCate}" ><a th:text = "${cate.name}"  class="cate" th:href="@{/store/{id}(id = ${cate.id})}"></a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>
@@ -196,11 +204,11 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop01.png" alt="">
+								<img src="./img/vatlieu.png" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Laptop<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>Sản phẩm<br>Vật liệu xây dựng</h3>
+								<a th:href="@{/store/1}" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -210,11 +218,11 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop03.png" alt="">
+								<img src="./img/noithat.jpg" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Accessories<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>Sản phẩm<br>Thiết bị nội thất</h3>
+								<a th:href="@{/store/21}" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -224,11 +232,11 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop02.png" alt="">
+								<img src="./img/daoplat.jpg" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Cameras<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>Sản phẩm<br>Gạch Đá ốp lát</h3>
+								<a th:href="@{/store/3}" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -250,13 +258,12 @@
 					<!-- section title -->
 					<div class="col-md-12">
 						<div class="section-title">
-							<h3 class="title">New Products</h3>
+							<h3 class="title">Sản phẩm mới</h3>
 							<div class="section-nav">
 								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-									<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
-									<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
-									<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
+<!-- 									<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li> -->
+									<li class="" th:each = "cate: ${listCate}" th:if = "${cate.id} != 4" th:classappend = "${cate.id} == 2 ? active "><a data-toggle="tab" th:data-value="${cate.id}" th:text = "${cate.name}" href="#tab1">Smartphones</a></li>
+									
 								</ul>
 							</div>
 						</div>
@@ -274,23 +281,19 @@
 										<div th:each = "pro: ${listPro}" class="product" >
 											<div class="product-img">
 											
-											<a th:href = "@{/detail}"><img src="./img/product01.png" alt=""> </a>
+											<a th:href = "@{/detail}">
+											<img th:if = "${pro.image.size == 0}" src="./img/empty.png" style = "max-width: 100%; max-height: 100%; height: 306px;" alt=""> 
+											<img th:if = "${pro.image.size != 0}"  th:src = "*{'data:image/jpg;base64, '+{pro.image.get(0).convertBlobToBase64()}}" style = "max-width: 100%; max-height: 100%; height: 306px;" alt=""> 				
+											</a>
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>
 												</div>
 											</div>
 											<div  class="product-body">
-												<p class="product-category"  th:text = "${pro[3]}"></p>
-												<h3 class="product-name"><a href="#" th:text = "${pro[1]}"></a></h3>
-												<h4 class="product-price" th:text = "${pro[2]}"><del class="product-old-price">$990.00</del></h4>
-<!-- 												<div class="product-rating"> -->
-<!-- 													<i class="fa fa-star"></i> -->
-<!-- 													<i class="fa fa-star"></i> -->
-<!-- 													<i class="fa fa-star"></i> -->
-<!-- 													<i class="fa fa-star"></i> -->
-<!-- 													<i class="fa fa-star"></i> -->
-<!-- 												</div> -->
+												<p class="product-category"  th:text = "${pro.idCate.nameDetailCate}"></p>
+												<h3 class="product-name"><a href="#" th:text = "${pro.name}"></a></h3>
+												<h4 class="product-price" th:text = "${pro.price}"><del class="product-old-price">$990.00</del></h4>
 												<div class="product-btns">
 													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
 													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
@@ -299,12 +302,12 @@
 											</div>
 											<div class="add-to-cart">
 												<button  class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-												<a id = "idPro" hide = "true" th:text = "${pro[0]}"></a>
+												<a id = "idPro" hide = "true" th:text = "${pro.id}"></a>
 											</div>
 										</div>
-										<!-- /product -->
+										<!-- product -->
 									</div>
-									<div id="slick-nav-2" class="products-slick-nav"></div>
+									<div id="slick-nav-1" class="products-slick-nav"></div>
 								</div>
 								<!-- /tab -->
 							</div>
@@ -326,7 +329,7 @@
 				<div class="row">
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
-							<h4 class="title">Top selling</h4>
+							<h4 class="title">Bán nhiều nhất</h4>
 							<div class="section-nav">
 								<div id="slick-nav-3" class="products-slick-nav"></div>
 							</div>
@@ -419,7 +422,7 @@
 
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
-							<h4 class="title">Top selling</h4>
+							<h4 class="title">Bán nhiều nhất</h4>
 							<div class="section-nav">
 								<div id="slick-nav-4" class="products-slick-nav"></div>
 							</div>
@@ -514,7 +517,7 @@
 
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
-							<h4 class="title">Top selling</h4>
+							<h4 class="title">Bán nhiều nhất</h4>
 							<div class="section-nav">
 								<div id="slick-nav-5" class="products-slick-nav"></div>
 							</div>
@@ -661,9 +664,9 @@
 								<h3 class="footer-title">About Us</h3>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+									<li><a href="#"><i class="fa fa-map-marker"></i>18A NamDinh</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>0985029xxx</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>Duannguyen242@email.com</a></li>
 								</ul>
 							</div>
 						</div>

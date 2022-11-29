@@ -45,12 +45,19 @@ Table OF Contents
 11 > FOOTER
 11 > SLICK STYLE
 12 > RESPONSIVE
+
+
 ------------------------------------*/
 
 /*=========================================================
-	01 -> GENERAL
+	custom css
 ===========================================================*/
-
+.shop-img img{
+	max-height: 100%;
+	max-width: 100%;
+	width: 360px;
+	height: 265px;
+}
 /*----------------------------*\
 	Typography
 \*----------------------------*/
@@ -721,6 +728,7 @@ span.psw {
 .cart-dropdown .cart-btns>a:first-child {
   margin-right: -4px;
   background-color: #1e1f29;
+  width:100%;
 }
 
 .cart-dropdown .cart-btns>a:hover {
@@ -844,7 +852,7 @@ span.psw {
   left: 0px;
   width: 60%;
   background: #D10024;
-  opacity: 0.9;
+  opacity: 0.7;
   -webkit-transform: skewX(-45deg);
   -ms-transform: skewX(-45deg);
   transform: skewX(-45deg);
@@ -858,7 +866,7 @@ span.psw {
   left: 1px;
   width: 100%;
   background: #D10024;
-  opacity: 0.9;
+  opacity: 0.7;
   -webkit-transform: skewX(-45deg) translateX(-100%);
   -ms-transform: skewX(-45deg) translateX(-100%);
   transform: skewX(-45deg) translateX(-100%);
@@ -1483,7 +1491,7 @@ span.psw {
   color: #D10024;
 }
 
-.store-pagination li.active {
+.store-pagination a.active {
   background-color: #D10024;
   border-color: #D10024;
   color: #FFF;

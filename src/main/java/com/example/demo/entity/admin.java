@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,8 @@ public class admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int id;
+	
+	@Column(name = "username")
 	public String userName;
 	public String passwords;
 	

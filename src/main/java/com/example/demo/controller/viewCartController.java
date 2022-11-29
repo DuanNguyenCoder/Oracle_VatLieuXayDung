@@ -8,22 +8,25 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.entity.Product;
 import com.example.demo.entity.itemCart;
-import com.example.demo.responsitory.itemCartRepository;
 import com.example.demo.responsitory.productRepository;
+import com.example.demo.service.ItemCartService;
+import com.example.demo.service.productService;
 
 @Controller
 public class viewCartController {
 	
-	
-	itemCartRepository item = new itemCartRepository() ;
+	@Autowired
+	ItemCartService item;
 	
 	@Autowired
-	productRepository product;
+	productService product;
 	
 	@GetMapping("/Cart")
 	public String view() {
@@ -36,18 +39,14 @@ public class viewCartController {
 	}
 
 	
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@RequestMapping(value = "viewcart/add", method = RequestMethod.GET)
 	public @ResponseBody Collection<itemCart>   add(int productID) {
 		try {
 			System.out.println(productID);
-			Object[] p = product.findById(productID);
-			Object[] p2 = (Object[])p[0];
-			
-			int id = ( (BigDecimal)p2[0]).intValue();
-			int price = ( (BigDecimal)p2[4]).intValue();
+			Product p = product.findByIdPro(productID).get();
 			
 			
-			itemCart cart = new itemCart(id,(String)p2[1],price,(String)p2[2],(String)p2[7],1);
+			itemCart cart = new itemCart(p.id,p.name,p.price,p.description,p.idCate.nameDetailCate,1);
 			
 			item.add(cart);
 			
@@ -58,9 +57,12 @@ public class viewCartController {
 		
 	}
 	
-	@GetMapping("remove")
-	public String remove() {
-		return "";
+	@PostMapping("viewcart/remove")
+	public @ResponseBody Object[]  remove(int itemId) {
+	item.remove(itemId);
+	
+	Object[] ob  = {item.getAmount(),item.getsize()};
+		return ob;
 	}
 	
 	@GetMapping("update")

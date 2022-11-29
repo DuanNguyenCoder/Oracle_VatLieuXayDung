@@ -1,3 +1,42 @@
+
+/********** custom dashboard CSS **********/
+.col-md-8 {
+  width: 70%;
+ 
+}
+
+.col-md-8 .mt-3{
+   margin-left: 100px;
+   text-align: end;
+}
+.inputs i{
+
+position: absolute;
+top: 14px;
+left: 4px;
+color: red;
+}
+
+.btnControl{
+margin-bottom: 20px;
+text-align: end;
+}
+
+
+/* add scroll table product */
+
+/* thead, tbody { display: inline-block; } */
+
+/* tbody { */
+/*     height: 1000px; */
+/*     width: 1000px;        */
+/*     overflow-y: auto;     */
+/*     overflow-x: hidden;   */
+/* } */
+
+
+
+
 /********** Template CSS **********/
 :root {
     --primary: #EB1616;
